@@ -71,8 +71,8 @@ function draw() {
         // including asteroids that result from being hit.
         asteroids[j].playSoundEffect(explosionSoundEffects);
         score += points[asteroids[j].size];
-        var dustVel = p5.Vector.add(lasers[i].vel.mult(0.2), asteroids[j].vel);
-        var dustNum = (asteroids[j].size + 1) * 5;
+        var dustVel = p5.Vector.add(lasers[i].vel, asteroids[j].vel);
+        var dustNum = (asteroids[j].size + 1) * 20;
         addDust(asteroids[j].pos, dustVel, dustNum);
         // The new smaller asteroids broken lasers are added to the same list
         // of asteroids, so they can be referenced the same way as their full
