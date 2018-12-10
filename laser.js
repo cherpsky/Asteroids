@@ -36,12 +36,18 @@ function Laser(spos, svel, angle) {
   this.vel.mult(10);
   this.vel.add(svel);
   this.color = colors[floor(random(0, colors.length - 1))];
+  this.laserLength = 30;
 
   this.render = function() {
     push();
     stroke(this.color[0], this.color[1], this.color[2]);
-    strokeWeight(this.r);
-    point(this.pos.x, this.pos.y);
+    strokeWeight(this.r/2);
+    let x2 = cos(angle) * this.laserLength + this.pos.x;
+    let y2 = sin(angle) * this.laserLength + this.pos.y;
+    line(this.pos.x, this.pos.y, x2 , y2);
+    noStroke();
+    fill(this.color[0], this.color[1], this.color[2]);
+    ellipse(x2, y2, this.r, this.r);
     pop();
   }
 
